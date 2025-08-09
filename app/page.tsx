@@ -29,7 +29,7 @@ export default function Landing() {
   const [submitted, setSubmitted] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  // Needed for banner + modals
+  // Banner + modals
   const [user, setUser] = useState<any>(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showHostWizard, setShowHostWizard] = useState(false);
@@ -70,7 +70,7 @@ export default function Landing() {
             <a href="#safety" className="hover:text-slate-900/80 text-slate-600 dark:text-slate-300 transition-colors">Safety</a>
             <a href="#zones" className="hover:text-slate-900/80 text-slate-600 dark:text-slate-300 transition-colors">Zoning</a>
             <a href="#hosts" className="hover:text-slate-900/80 text-slate-600 dark:text-slate-300 transition-colors">Hosts</a>
-            <a href="#dev" className="hover:text-slate-900/80 text-slate-600 dark:text-slate-300 transition-colors">Developers</a>
+            <a href="#design" className="hover:text-slate-900/80 text-slate-600 dark:text-slate-300 transition-colors">Design</a>
             <a href="#faq" className="hover:text-slate-900/80 text-slate-600 dark:text-slate-300 transition-colors">FAQ</a>
           </nav>
           <div className="flex items-center gap-2">
@@ -100,8 +100,22 @@ export default function Landing() {
         <HostWizard user={user} onClose={() => setShowHostWizard(false)} />
       )}
 
-      {/* Hero */}
-      <section className="mx-auto max-w-7xl px-4 pt-14 pb-16">
+      {/* HERO — video/render placeholder (NEW) */}
+      <section id="hero-video" className="mx-auto max-w-7xl px-4 pt-10 pb-8">
+        <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="aspect-[16/9] bg-slate-200 dark:bg-slate-800 grid place-items-center">
+            <div className="text-center p-6">
+              <div className="text-sm uppercase tracking-widest text-slate-600 dark:text-slate-300">Hero Video Placeholder</div>
+              <div className="mt-2 text-xl font-semibold text-slate-700 dark:text-slate-200">
+                Future: zoom-in of Baseball Stadium • Teen Commons • Auditorium • Homes (school hours)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero copy */}
+      <section className="mx-auto max-w-7xl px-4 pb-8">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <motion.div variants={fade} initial="hidden" animate="show" className="space-y-6">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
@@ -132,7 +146,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Pilot Home (NEW) */}
+      {/* Pilot Home */}
       <section id="pilot-home" className="mx-auto max-w-7xl px-4 pb-8">
         <div className="grid md:grid-cols-2 gap-6 items-start">
           <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
@@ -156,8 +170,8 @@ export default function Landing() {
             </ul>
             <div className="flex gap-3">
               <Button onClick={() => alert("Booking flow placeholder")}>Book the Pilot Home</Button>
-              <Button variant="outline" onClick={() => document.getElementById("vision")?.scrollIntoView({behavior: "smooth"})}>
-                See the Resort Vision
+              <Button variant="outline" onClick={() => document.getElementById("design")?.scrollIntoView({behavior: "smooth"})}>
+                See the Resort Design
               </Button>
             </div>
           </div>
@@ -184,12 +198,12 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Resort Vision (NEW) */}
-      <section id="vision" className="mx-auto max-w-7xl px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4">The Resort Layout (Teen-first)</h2>
+      {/* How the resort is designed (diagram moved here) */}
+      <section id="design" className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4">How the resort is designed</h2>
         <p className="text-slate-600 dark:text-slate-300 mb-6">
-          A gated neighborhood designed for homeschool life: central auditorium for music and talks,
-          a real baseball stadium for daily league play, and a Teen Commons for projects, clubs, and hanging out.
+          Teen-first: a central auditorium for performances and talks, a real baseball stadium for daily league play,
+          and a Teen Commons for projects, clubs, and hanging out. Bookable homes cluster around the hub, with clear overflow parking.
         </p>
         <AerialPlan />
       </section>
