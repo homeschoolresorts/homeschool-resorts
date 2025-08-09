@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body { height: 100%; }
+.staging-ribbon { position: fixed; top: 10px; left: -40px; transform: rotate(-45deg); background: #ef4444; color: white; padding: 6px 60px; font-size: 12px; font-weight: 700; z-index: 50; box-shadow: 0 2px 6px rgba(0,0,0,.2);}
