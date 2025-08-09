@@ -1,3 +1,4 @@
+Staging build trigger – test
 # HomeschoolResorts — Staging Kit
 
 This project is ready for **Vercel + GitHub** with staging safeguards.
