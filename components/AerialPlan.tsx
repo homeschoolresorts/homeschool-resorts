@@ -67,14 +67,14 @@ export default function AerialPlan() {
           <path d="M 460 320 L 330 260" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
           <path d="M 460 460 L 330 490" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
 
-          {/* Legend */}
-          <rect x="40" y="40" width="250" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb" />
-          <circle cx="60" cy="70" r="8" fill="#e6eef7" stroke="#cbd5e1" />
-          <text x="80" y="75" fontSize="16" fill="#334155">Central Hub</text>
-          <circle cx="60" cy="100" r="8" fill="#dcfce7" stroke="#86efac" />
-          <text x="80" y="105" fontSize="16" fill="#334155">Stadium</text>
-          <rect x="52" y="118" width="16" height="10" fill="#f1f5f9" stroke="#cbd5e1" />
-          <text x="80" y="127" fontSize="16" fill="#334155">Overflow Parking</text>
+          {/* Legend (moved to top-right so it doesn't overlap homes) */}
+          <rect x="910" y="40" width="250" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb" />
+          <circle cx="930" cy="70" r="8" fill="#e6eef7" stroke="#cbd5e1" />
+          <text x="950" y="75" fontSize="16" fill="#334155">Central Hub</text>
+          <circle cx="930" cy="100" r="8" fill="#dcfce7" stroke="#86efac" />
+          <text x="950" y="105" fontSize="16" fill="#334155">Stadium</text>
+          <rect x="922" y="118" width="16" height="10" fill="#f1f5f9" stroke="#cbd5e1" />
+          <text x="950" y="127" fontSize="16" fill="#334155">Overflow Parking</text>
         </svg>
       </div>
       <p className="text-sm text-slate-600 dark:text-slate-300 mt-3">
