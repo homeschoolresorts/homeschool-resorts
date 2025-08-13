@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import AerialPlan from "@/components/AerialPlan";
+import AerialPlan from "@/components/AerialPlan"; // keep placeholder component
 import {
   Check,
   Shield,
@@ -20,12 +21,20 @@ import {
   HeartHandshake,
   Moon,
   Sun,
+  PlayCircle,
 } from "lucide-react";
+
+/**
+ * HomeschoolResorts — Landing (Merged Shell v0.4)
+ * - Merges your interactive shell (dark mode, login modal, host wizard)
+ *   with the exact section order + wording you provided.
+ * - No backend. Forms are placeholders (alerts only). Buttons are anchors/scroll.
+ * - Safe vocabulary preserved. Use this as your staging landing page.
+ */
 
 export default function Landing() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("Parent");
-  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -38,7 +47,7 @@ export default function Landing() {
     document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleWaitlistSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitted(true);
   }
@@ -78,7 +87,7 @@ export default function Landing() {
               {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             <Button variant="ghost" className="hidden sm:inline-flex" onClick={()=>document.getElementById("waitlist")?.scrollIntoView({behavior:"smooth"})}>Join waitlist</Button>
-            <Button className="inline-flex" onClick={()=>document.getElementById("host")?.scrollIntoView({behavior:"smooth"})}>Become a host</Button>
+            <Button className="inline-flex" onClick={()=>document.getElementById("hosts")?.scrollIntoView({behavior:"smooth"})}>Become a host</Button>
           </div>
         </div>
       </header>
@@ -94,13 +103,13 @@ export default function Landing() {
 
       {/* Modals */}
       {showLogin && (
-        <LoginModal onClose={() => setShowLogin(false)} onSuccess={(u) => { setUser(u); setShowLogin(false); }}/>
+        <LoginModal onClose={() => setShowLogin(false)} onSuccess={(u) => { setUser(u); setShowLogin(false); }} />
       )}
       {showHostWizard && user && (
         <HostWizard user={user} onClose={() => setShowHostWizard(false)} />
       )}
 
-      {/* HERO — video/render placeholder (NEW) */}
+      {/* HERO — video/render placeholder */}
       <section id="hero-video" className="mx-auto max-w-7xl px-4 pt-10 pb-8">
         <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="aspect-[16/9] bg-slate-200 dark:bg-slate-800 grid place-items-center">
@@ -118,9 +127,7 @@ export default function Landing() {
       <section className="mx-auto max-w-7xl px-4 pb-8">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <motion.div variants={fade} initial="hidden" animate="show" className="space-y-6">
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-              Restore community — <span className="text-indigo-600 dark:text-indigo-400">without schooling</span>
-            </h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Restore community — <span className="text-indigo-600 dark:text-indigo-400">without schooling</span></h1>
             <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
               Book homeschool-friendly homes inside gated resort neighborhoods. Parent-led gatherings. No drop-offs. Zoning-safe by design.
             </p>
@@ -150,19 +157,14 @@ export default function Landing() {
       <section id="pilot-home" className="mx-auto max-w-7xl px-4 pb-8">
         <div className="grid md:grid-cols-2 gap-6 items-start">
           <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
-            {/* Replace with a real image or <video> later */}
             <div className="aspect-[4/3] bg-slate-200 dark:bg-slate-800 grid place-items-center">
               <span className="text-slate-600 dark:text-slate-300">Pilot Home — photo/video placeholder</span>
             </div>
           </div>
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-amber-50 text-amber-900 border border-amber-200 px-3 py-1 text-xs mb-3">
-              Phase 0 • Hosting now
-            </div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-amber-50 text-amber-900 border border-amber-200 px-3 py-1 text-xs mb-3">Phase 0 • Hosting now</div>
             <h2 className="text-2xl md:text-3xl font-semibold mb-2">Book the Pilot Home</h2>
-            <p className="text-slate-600 dark:text-slate-300 mb-4">
-              Parent-led gatherings during school hours. Driveway parking only. Two-adult coverage per active room.
-            </p>
+            <p className="text-slate-600 dark:text-slate-300 mb-4">Parent-led gatherings during school hours. Driveway parking only. Two-adult coverage per active room.</p>
             <ul className="text-slate-700 dark:text-slate-200 space-y-1 mb-4">
               <li>• Open kitchen + living space</li>
               <li>• Morning, mid-day, or afternoon blocks</li>
@@ -170,9 +172,7 @@ export default function Landing() {
             </ul>
             <div className="flex gap-3">
               <Button onClick={() => alert("Booking flow placeholder")}>Book the Pilot Home</Button>
-              <Button variant="outline" onClick={() => document.getElementById("design")?.scrollIntoView({behavior: "smooth"})}>
-                See the Resort Design
-              </Button>
+              <Button variant="outline" onClick={() => document.getElementById("design")?.scrollIntoView({behavior: "smooth"})}>See the Resort Design</Button>
             </div>
           </div>
         </div>
@@ -198,12 +198,11 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* How the resort is designed (diagram moved here) */}
+      {/* Design (diagram) */}
       <section id="design" className="mx-auto max-w-7xl px-4 py-12">
         <h2 className="text-2xl md:text-3xl font-semibold mb-4">How the resort is designed</h2>
         <p className="text-slate-600 dark:text-slate-300 mb-6">
-          Teen-first: a central auditorium for performances and talks, a real baseball stadium for daily league play,
-          and a Teen Commons for projects, clubs, and hanging out. Bookable homes cluster around the hub, with clear overflow parking.
+          Teen-first: a central auditorium for performances and talks, a real baseball stadium for daily league play, and a Teen Commons for projects, clubs, and hanging out. Bookable homes cluster around the hub, with clear overflow parking.
         </p>
         <AerialPlan />
       </section>
@@ -248,7 +247,7 @@ export default function Landing() {
       </section>
 
       {/* Hosts */}
-      <section id="host" className="mx-auto max-w-7xl px-4 py-12">
+      <section id="hosts" className="mx-auto max-w-7xl px-4 py-12">
         <div className="grid md:grid-cols-2 gap-6 items-start">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Become a host</h2>
@@ -313,7 +312,7 @@ export default function Landing() {
             {submitted ? (
               <div className="text-emerald-600 dark:text-emerald-400">Thanks! We’ll keep you posted.</div>
             ) : (
-              <form onSubmit={handleSubmit} className="grid md:grid-cols-3 gap-3">
+              <form onSubmit={handleWaitlistSubmit} className="grid md:grid-cols-3 gap-3">
                 <Input placeholder="Email address" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required />
                 <select className="rounded-md border bg-white dark:bg-slate-900 dark:border-slate-700 px-3 py-2" value={role} onChange={(e)=>setRole(e.target.value)}>
                   <option>Parent</option>
@@ -394,9 +393,7 @@ function LoginModal({ onClose, onSuccess }: { onClose: () => void; onSuccess: (u
           </label>
           <div className="flex justify-end gap-2 pt-2">
             <Button variant="ghost" onClick={onClose}>Cancel</Button>
-            <Button onClick={() => agree && email && onSuccess({ email, name })}>
-              Continue
-            </Button>
+            <Button onClick={() => agree && email && onSuccess({ email, name })}>Continue</Button>
           </div>
         </div>
       </div>
